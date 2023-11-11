@@ -1,0 +1,72 @@
+def palindrome_checker(str):
+  n=len(str)
+  (i,j)=(0,n-1)
+  while(i<=j):
+    if(str[i]!=str[j]):
+      return False
+    i+=1
+    j-=1
+  return True
+
+def Fibonnacci_Sequence(n):
+  a=0
+  b=1
+  fib_list=[a,b]
+  if n==1:
+    return fib_list[0]
+  if (n==2):
+    return fib_list
+    
+  else:
+    for i in range(2,n):
+      fib_list.append(fib_list[i-1]+fib_list[i-2])
+  return fib_list
+
+def check(s):
+  if ((s>='a' and s<='z') or (s>='A' and s<='Z')):
+    return True
+  return False
+
+
+def words_frequency(sentence):
+  
+  dict = {}
+  p = ""
+  n=len(sentence)
+  for i in range(n):
+    if (check(sentence[i])):
+      p+=sentence[i]
+    else:
+      if p=="":
+          continue
+      if (p in dict):
+        dict[p]+=1
+      else:
+        dict[p]=1
+      p=""
+  return dict
+
+  
+def palindrome_checker_input():
+  str=input("Enter the string to check palindrome: ")
+  return palindrome_checker(str)
+
+
+def fibonacci_sequence_input():
+  n=int(input("Enter the number of terms for fibanacci sequence: "))
+  return Fibonnacci_Sequence(n)
+
+def words_frequency_input():
+  sentence=input("Enter the sentence for counting frequency of words: ")
+  return words_frequency(sentence)
+
+
+num=int(input("Enter number between 1 and 3: "))
+if (num==1):
+  print(palindrome_checker_input())
+elif (num==2):
+  print(fibonacci_sequence_input())
+elif (num==3):
+  print(words_frequency_input())
+else:
+  print("Enter a suitable number")
